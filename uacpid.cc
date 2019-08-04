@@ -1,6 +1,5 @@
 #include <cstdio>
 #include <fstream>
-#include <filesystem>
 #include <map>
 #include <string>
 #include <sstream>
@@ -14,7 +13,6 @@
 typedef std::vector<std::string> argv_type;
 typedef std::map<std::string, argv_type> stringmap;
 typedef std::map<argv_type, argv_type> multi_stringmap;
-namespace file = std::filesystem;
 
 #include "config.hh"
 #include "display.hh"
@@ -114,7 +112,7 @@ int main(int argc, char* argv[]) {
 
   while (std::getline(acpi_listen, line)) {
     if (check_active_tty) {
-      std::string active_tty = get_active_tty();      
+      std::string active_tty = get_active_tty();
 
       if (active_tty.size() > 0 && active_tty != start_tty) {
 	fprintf(stderr, "NOTICE: active and startup terminal differ, ignoring event\n");
