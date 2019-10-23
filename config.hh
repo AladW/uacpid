@@ -31,22 +31,22 @@ static const stringmap rules_fallback = {
    {}
   },
   {"button/mute",
-   {"amixer", "set", "Master", "toggle"}
+   {"watch", "-k", "1", "1", "amixer", "set", "Master", "toggle"}
   },
   {"button/sleep",
    {}
   },
   {"button/volumedown",
-   {"amixer", "set", "Master", "5-"}
+   {"watch", "-k", "1", "1", "amixer", "set", "Master", "5-"}
   },
   {"button/volumeup",
-   {"amixer", "set", "Master", "5+"}
+   {"watch", "-k", "1", "1", "amixer", "set", "Master", "5+"}
   },
   {"video/brightnessup",
-   {"xbacklight", "-inc", "10"}
+   {"watch", "-k", "1", "1", "xbacklight", "-inc", "10"}
   },
   {"video/brightnessdown",
-   {"xbacklight", "-dec", "10"}
+   {"watch", "-k", "1", "1", "xbacklight", "-dec", "10"}
   },
   {"video/switchmode",
    {}
