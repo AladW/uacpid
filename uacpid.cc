@@ -57,11 +57,12 @@ static std::string get_active_tty() {
 int main(int argc, char* argv[]) {
   static bool open_display{};
   static bool check_active_tty{};
+  static std::string arg_tty{};
 
   static struct option opts[] = {
-    {"help",        no_argument, nullptr, 'h'},
-    {"opendisplay", no_argument, nullptr, 'o'},
-    {"tty",         no_argument, nullptr, 't'},
+    {"help",        no_argument,       nullptr, 'h'},
+    {"opendisplay", no_argument,       nullptr, 'o'},
+    {"tty",         optional_argument, nullptr, 't'},
     {}
   };
 
@@ -76,6 +77,9 @@ int main(int argc, char* argv[]) {
       break;
     case 't':
       check_active_tty = true;
+      if (optarg) {
+	arg_tty = optarg;
+      }
       break;
     default:
       std::exit(1);
@@ -93,7 +97,11 @@ int main(int argc, char* argv[]) {
 
   std::string start_tty{};
   if (check_active_tty) {
-    start_tty = get_active_tty();
+    if (arg_tty.size()) {
+      start_tty = arg_tty;
+    } else {
+      start_tty = get_active_tty();
+    }
 
     if (start_tty.size() == 0) {
       check_active_tty = false; // disable later TTY checks
