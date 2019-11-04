@@ -1,0 +1,8 @@
+[Unit]
+Description=acpid user daemon
+
+[Service]
+ExecStart=%h/.local/bin/uacpid --opendisplay --tty
+
+[Install]
+WantedBy=default.target
