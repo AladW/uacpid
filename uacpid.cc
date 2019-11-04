@@ -112,7 +112,8 @@ int main(int argc, char* argv[]) {
 
   redi::ipstream acpi_listen(ACPI_LISTEN_CMD, redi::pstreams::pstdout);
   if (acpi_listen.fail()) {
-    throw std::runtime_error("failed to execute acpi_listen");
+    fprintf(stderr, "ERROR: failed to execute acpi_listen\n");
+    std::exit(1);
   }
 
   std::string line{};

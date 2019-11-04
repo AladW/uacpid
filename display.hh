@@ -28,7 +28,8 @@ void display_worker() {
     // handle last event
     XCloseDisplay(display);
   } else {
-    throw std::invalid_argument("could not open display");
+    fprintf(stderr, "ERROR: could not open display\n");
+    std::exit(1);
   }
 }
 
