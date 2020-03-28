@@ -23,6 +23,12 @@ static const multi_stringmap rules = {
   },
   {{"processor", "LNXCPU:03", "00000081", "00000000"},
    {}
+  },
+  {{"video/tabletmode", "TBLT", "0000008A", "00000000"},
+   {"thinkpad-rotate", "normal"}
+  },
+  {{"video/tabletmode", "TBLT", "0000008A", "00000001"},
+   {"thinkpad-rotate", "inverted"}
   }
 };
 
